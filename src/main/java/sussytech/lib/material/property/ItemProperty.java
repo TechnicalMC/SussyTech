@@ -7,8 +7,9 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import sussytech.SussyIdentifier;
@@ -93,7 +94,7 @@ public final class ItemProperty implements MaterialProperty<ItemProperty> {
 
                 Identifier identifier = createItemIdentifier(type, material);
 
-                Registry.register(Registry.ITEM, identifier, item);
+                Registry.register(Registries.ITEM, identifier, item);
                 this.items.put(type, item);
 
                 //TODO register tags to the items
@@ -115,7 +116,7 @@ public final class ItemProperty implements MaterialProperty<ItemProperty> {
             Identifier identifier = createItemIdentifier(itemType, material);
             BlockItem blockItem = new BlockItem(block, itemType.createSettings(material));
 
-            Registry.register(Registry.ITEM, identifier, blockItem);
+            Registry.register(Registries.ITEM, identifier, blockItem);
             this.items.put(itemType, blockItem);
 
             //TODO register tags to the items
@@ -127,8 +128,7 @@ public final class ItemProperty implements MaterialProperty<ItemProperty> {
      * @param material the material
      * @return the name for the item
      */
-    private @NotNull Identifier createItemIdentifier(@NotNull MaterialItemType type, @NotNull Material material) {
-        return new Identifier(material.getIdentifier().getNamespace(),
-                type.name() + "." + material.getIdentifier().getPath());
+    private static @NotNull Identifier createItemIdentifier(@NotNull MaterialItemType type, @NotNull Material material) {
+        return new Identifier(material.getIdentifier().getNamespace(), type.name() + "." + material.getIdentifier().getPath());
     }
 }

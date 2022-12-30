@@ -1,7 +1,7 @@
 package sussytech.api;
 
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
 import sussytech.SussyIdentifier;
 import sussytech.api.material.Material;
 

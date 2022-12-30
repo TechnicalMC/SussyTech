@@ -3,8 +3,9 @@ package sussytech.lib.material.property;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import sussytech.SussyIdentifier;
@@ -59,7 +60,7 @@ public final class BlockProperty implements MaterialProperty<BlockProperty> {
 
                 Identifier identifier = createBlockIdentifier(type, material);
 
-                Registry.register(Registry.BLOCK, identifier, block);
+                Registry.register(Registries.BLOCK, identifier, block);
                 this.blocks.put(type, block);
 
                 //TODO register tags to the blocks
@@ -72,8 +73,7 @@ public final class BlockProperty implements MaterialProperty<BlockProperty> {
      * @param material the material
      * @return the name for the block
      */
-    private @NotNull Identifier createBlockIdentifier(@NotNull MaterialBlockType type, @NotNull Material material) {
-        return new Identifier(material.getIdentifier().getNamespace(),
-                type.name() + "." + material.getIdentifier().getPath());
+    private static @NotNull Identifier createBlockIdentifier(@NotNull MaterialBlockType type, @NotNull Material material) {
+        return new Identifier(material.getIdentifier().getNamespace(), type.name() + "." + material.getIdentifier().getPath());
     }
 }

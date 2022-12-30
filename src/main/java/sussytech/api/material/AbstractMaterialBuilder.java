@@ -1,9 +1,9 @@
 package sussytech.api.material;
 
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
-import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.NotNull;
 import sussytech.SussyIdentifier;
 import sussytech.api.SussyAPI;
